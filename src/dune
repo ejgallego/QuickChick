@@ -1,6 +1,6 @@
 (library
  (name quickchick_plugin)
- (public_name coq.plugins.quickchick)
+ (public_name quickchick.plugin)
  (flags :standard -warn-error -3-8-21-26-32-33-40-50)
  (modules :standard \ genSTCorrect genSizedSTMonotonic genSizedSTSizeMonotonic)
  (libraries coq.plugins.extraction))
@@ -25,3 +25,11 @@
  (deps (:pp-file weightmap.mlg))
  (action (run coqpp %{pp-file})))
 
+(coqlib
+ (name QuickChick)
+ (public_name quickchick)
+ (libraries quickchick.plugin))
+
+(env
+ (dev     (flags :standard -rectypes))
+ (release (flags :standard -rectypes)))
